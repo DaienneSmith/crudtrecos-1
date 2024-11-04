@@ -25,7 +25,7 @@ def home(): # Função executada ao acessar a rota raiz
     }
 
     # Renderiza o template HTML, passaod valores para ele
-    return render_template('_template.html', **pagina)
+    return render_template('home.html', **pagina)
 
 # Executa o servidor HTTP se estiver no modo de desenvolvimento
 # Remova / comente essas linhas no modo de produção
