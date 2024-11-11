@@ -152,6 +152,9 @@ def login():
         # Pega os dados preenchidos no formulário
         form = dict(request.form)
 
+        # Teste mesa
+        # print('\n\n\nFORM:', form, '\n\n\n')
+
         # Pesquisa se os dados existem no banco de dados → usuario
         # datetime.datetime(2024, 11, 8, 9, 23, 28)
         sql = '''
@@ -246,7 +249,7 @@ def perfil():
     # Dados, variáveis e valores a serem passados para o template HTML
     pagina = {
         'titulo': 'CRUDTrecos - Novo Treco',
-        'usuario': g.usuario
+        'usuario': g.usuario, # Dados do cookie do usuário
     }
 
     # Renderiza o template HTML, passaod valores para ele
@@ -286,6 +289,13 @@ def logout():
 
     # Redireciona para login
     return resposta
+
+
+@app.route('/apagausuario')
+def apagausuario():
+    # Apaga um usuário do sistema
+    # Também apaga todos os seus "trecos"
+    return 'foi'
 
 
 # Executa o servidor HTTP se estiver no modo de desenvolvimento

@@ -29,3 +29,17 @@ def datetime_para_string(data):
         elif isinstance(value, date):
             data[key] = value.isoformat()  # Converte date para string ISO 8601
     return data
+
+
+def calcular_idade(data_nascimento_str):
+    # Função que calcula a idade em anos de uma data no forma ISO (yyyy-mm-dd)
+    
+    # Converte a string da data para um objeto datetime no formato ISO
+    data_nascimento = datetime.strptime(data_nascimento_str, '%Y-%m-%d')
+    hoje = datetime.today()
+    # Calcula a diferença em anos
+    idade = hoje.year - data_nascimento.year
+    # Ajusta a idade se o aniversário ainda não aconteceu este ano
+    if (hoje.month, hoje.day) < (data_nascimento.month, data_nascimento.day):
+        idade -= 1
+    return idade
