@@ -50,18 +50,20 @@ INSERT INTO usuario (
     u_nome,
     u_nascimento,
     u_email,
-    u_senha
+    u_senha,
     u_foto
 ) VALUES (
     'Chocolate Oliveira',
     '1997-07-20',
     'chocolateoliveira@email.com',
-    SHA1('Senha123') -- Criptografa a senha do usuário
+    SHA1('Senha123'), -- Criptografa a senha do usuário
+    "https://picsum.photos/200"
 ), (
     'Doce Ferreira',
     '1996-11-17',
     'doceferreira@email.com',
-    SHA1('Senha123')
+    SHA1('Senha123'),
+      "https://picsum.photos/201"
 );
 
 -- Tabela 'produtos'

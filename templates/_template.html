@@ -25,7 +25,9 @@
             <a href="/" title="Listar meus produtos"><i
                     class="fa-regular fa-rectangle-list fa-fw"></i><span>Listar</span></a>
             <a href="/novo" title="Cadastrar novo produto"><i class="fa-solid fa-plus fa-fw"></i><span>Novo</span></a>
-            <a href="/perfil" id="navUsuario"><i class="fa-solid fa-user"></i><span>Olá {{ usuario.pnome }}!</span></a>
+            <a href="/perfil" id="navUsuario">
+                <img src="https://picsum.photos/200" alt="Foto do usuário" class="user-photo">
+                <span>Olá {{ usuario.pnome }}!</span></a>
         </nav>
         {% endif %}
 

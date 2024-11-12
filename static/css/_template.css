@@ -107,7 +107,7 @@ button {
 #wrap>header h1 {
     color: var(--primary-color);
     margin: 0;
-    text-shadow: 2px 2px 5px grey;
+    text-shadow: 2px 2px 5px #FF69B4;
 }
 
 #wrap>nav {
@@ -204,7 +204,7 @@ button {
 /***************/
 
 .field-help {
-    color: orange;
+    color: #FF1493;
     font-size: small;
     cursor: pointer;
 }
@@ -230,7 +230,7 @@ button {
 #wrap>main form input,
 #wrap>main form textarea {
     width: 100%;
-    border: 1px solid red;
+    border: 1px solid #DC143C;
 }
 
 #wrap>main form textarea {
@@ -239,7 +239,7 @@ button {
 
 #wrap>main form button[type=submit] {
     border: none;
-    background-color: grey;
+    background-color: #FF1493;
     color: white;
     cursor: pointer;
     pointer-events: none;
@@ -247,11 +247,11 @@ button {
 
 #wrap>main form input:valid,
 #wrap>main form textarea:valid {
-    border: 1px solid blue;
+    border: 1px solid #CD5C5C;
 }
 
 #wrap>main form:valid button[type=submit] {
-    background-color: steelblue;
+    background-color: #8B008B;
     pointer-events: all;
 }
 
@@ -263,7 +263,7 @@ button {
 .input-password span {
     display: inline-block;
     margin-left: .25rem;
-    color: grey;
+    color: #DB7093;
 }
 
 
@@ -314,7 +314,7 @@ button {
 #myDialog {
     border: none;
     border-radius: .3rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px #FF1493;
     padding: 1rem;
     width: 90%;
     max-width: 300px;
@@ -328,7 +328,7 @@ button {
 }
 
 #myDialog::backdrop {
-    background: rgba(0, 0, 0, 0.5);
+    background: #FF1493;
 }
 
 .flutua-icone {
@@ -350,15 +350,15 @@ button {
 }
 
 .btnProfile {
-    background-color: steelblue;
+    background-color: #C71585;
 }
 
 .btnLogout {
-    background-color: orange;
+    background-color: #DC143C;
 }
 
 .btnSignout {
-    background-color: orangered;
+    background-color: #FF69B4;
 }
 
 .center {
@@ -382,4 +382,19 @@ input.novasenha {
     border: 1px solid grey;
     border-radius: .3rem;
     width: 200px;
+}
+
+.user-photo {
+    width: 30px;  /* Defina o tamanho que deseja para a foto */
+    height: 30px;
+    border-radius: 50%;  /* Torna a imagem redonda */
+    margin-right: 8px;  /* Espaçamento entre a imagem e o texto */
+    vertical-align: middle;  /* Alinha a imagem verticalmente */
+}
+.profile-photo {
+    width: 100px;         /* Define a largura desejada para a foto */
+    height: 100px;        /* Define a altura desejada para a foto */
+    border-radius: 50%;   /* Torna a imagem redonda */
+    display: block;       /* Garante que a imagem seja exibida em um bloco separado */
+    margin: 0 auto 10px;  /* Centraliza a imagem e adiciona espaço abaixo */
 }
