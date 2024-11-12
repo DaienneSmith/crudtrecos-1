@@ -12,7 +12,8 @@
 <ul class="userdata">
     <li>Em: {{ usuario.databr }}</li>
     <li>Nascimento: {{ usuario.nascimentobr }} ({{ usuario.idade }} anos)</li>
-    <li>{{ usuario.total }} trecos cadastrados</li>
+    <li>{{ usuario.total }} produtos cadastrados</li>
+    <li>{{usuario.foto}}</li>
 </ul>
 
 <p>Clique no botão abaixo para editar seu perfil ou alterar a senha:</p>
@@ -28,7 +29,7 @@
 <script>
     // Monitora cliques no botão de apagar conta
     btnSignout.addEventListener('click', (e) => {
-        if (confirm('Tem certeza que deseja apagar sua conta?\nTodos os seus trecos serão apagados também!'))
+        if (confirm('Tem certeza que deseja apagar sua conta?\nTodos os seus produtos serão apagados também!'))
             location.href = '/apagausuario'
         return false
     })

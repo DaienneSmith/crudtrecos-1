@@ -4,24 +4,24 @@
 {# Bloco com conteúdo desta página #}
 {% block conteudo %}
 
-<h2>Lista de Trecos</h2>
+<h2>Lista de produtos</h2>
 
 <div class="lista">
 
-    {% for treco in trecos %}
+    {% for produtos in produtos %}
 
     <div class="item">
-        <a href="{{ treco.t_foto }}" target="_blank"><img src="{{ treco.t_foto }}" alt="{{ treco.t_nome }}"></a>
+        <a href="{{ produtos.t_foto }}" target="_blank"><img src="{{ produtos.t_foto }}" alt="{{ produtos.t_nome }}"></a>
         <div>
-            <a class="flutua-icone" href="/apaga/{{ treco.t_id }}" title="Apagar {{ treco.t_nome }}." onclick="return confirm('Term certeza que deseja apagar este treco?')">
+            <a class="flutua-icone" href="/apaga/{{ produtos.t_id }}" title="Apagar {{ produtos.t_nome }}." onclick="return confirm('Term certeza que deseja apagar este produtos?')">
                 <i class="fa-regular fa-trash-can fa-fw"></i>
             </a>
-            <a class="flutua-icone" href="/edita/{{ treco.t_id }}" title="Editar {{ treco.t_nome }}.">
+            <a class="flutua-icone" href="/edita/{{ produtos.t_id }}" title="Editar {{ produtos.t_nome }}.">
                 <i class="fa-solid fa-pen-to-square fa-fw"></i>
             </a>
-            <h4>{{ treco.t_nome }}</h4>
-            {{ treco.t_descricao }}
-            <small>Local: {{ treco.t_localizacao }}</small>
+            <h4>{{ produtos.t_nome }}</h4>
+            {{ produtos.t_descricao }}
+            <small>Local: {{ produtos.t_localizacao }}</small>
         </div>
     </div>
 
@@ -33,7 +33,7 @@
 
 <dialog id="myDialog">
     <h4>Oba!</h4>
-    <p>Seu treco foi apagado com sucesso!</p>
+    <p>Seu produto foi apagado com sucesso!</p>
     <form method="dialog">
         <button onclick="window.history.pushState({}, '', '/')">OK</button>
     </form>
@@ -46,7 +46,7 @@
 
 <dialog id="myDialog">
     <h4>Oba!</h4>
-    <p>Seu treco foi editado com sucesso!</p>
+    <p>Seu produto foi editado com sucesso!</p>
     <form method="dialog">
         <button onclick="window.history.pushState({}, '', '/')">OK</button>
     </form>

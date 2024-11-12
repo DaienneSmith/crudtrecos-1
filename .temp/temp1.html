@@ -30,14 +30,14 @@
 
 <div class="lista">
 
-    {% for treco in trecos %}
+    {% for produtos in produtos %}
 
     <div class="item">
-        <a href="{{ treco.t_foto }}" target="_blank"><img src="{{ treco.t_foto }}" alt="{{ treco.t_nome }}"></a>
+        <a href="{{ produtos.t_foto }}" target="_blank"><img src="{{ produtos.t_foto }}" alt="{{ produtos.t_nome }}"></a>
         <div>
-            <h4>{{ treco.t_nome }}</h4>
-            {{ treco.t_descricao }}
-            <small>Local: {{ treco.t_localizacao }}</small>
+            <h4>{{ produtos.t_nome }}</h4>
+            {{ produtos.t_descricao }}
+            <small>Local: {{ produtos.t_localizacao }}</small>
         </div>
     </div>
 

@@ -8,22 +8,22 @@
     --font-size: 16px;
 
     /* Cor de fundo do site */
-    --background-color: rgb(23, 64, 92);
+    --background-color: #DB7093;
 
     /* Cor 1 do tema */
-    --primary-color: steelblue;
+    --primary-color: #C71585;
 
     /* Cor 2 do tema */
-    --secondary-color: orange;
+    --secondary-color: 	#FF69B4;
 
     /* Cor 3 do tema */
-    --tertiary-color: orangered;
+    --tertiary-color: #CD5C5C;
 
     /* Cor de fundo das caixas*/
-    --box-background-color: white;
+    --box-background-color: #FFC0CB;
 
     /* Definição do logotipo */
-    --logo-border: .8px black;
+    --logo-border: .8px #A0522D;
 }
 
 * {
@@ -101,7 +101,7 @@ button {
     font-size: 3rem;
     color: var(--secondary-color);
     -webkit-text-stroke: var(--logo-border);
-    text-shadow: 2px 2px 5px grey;
+    /* text-shadow: 2px 2px 5px grey; */
 }
 
 #wrap>header h1 {

@@ -24,10 +24,10 @@ SELECT u_id, u_nome, u_email
 FROM usuario
 WHERE u_status != 'del';
 
--- Lista todos os trecos do "Joca" (id = 1)
-SELECT * FROM treco
+-- Lista todos os produtos do "Chocolate" (id = 1)
+SELECT * FROM produtos
 WHERE t_usuario = '1';
 
--- Lista todos os trecos do "Joca" (id = 1) que estejam "online" (status = 'on')
-SELECT * FROM treco 
+-- Lista todos os produtos do "Chocolate" (id = 1) que estejam "online" (status = 'on')
+SELECT * FROM produtos 
 WHERE t_usuario = '1' AND t_status = 'on';

@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'crudtrecos'
+app.config['MYSQL_DB'] = 'mardechocolate'
 
 # Setup da conexão com MySQL
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
@@ -51,8 +51,8 @@ def start():
     # # No futuro, isso virá de um cookie
     # g.usuario = {
     #     'id': '1',
-    #     'nome': 'Joca da Silva',
-    #     'pnome': 'Joca',
+    #     'nome': 'Chocolate Oliveira',
+    #     'pnome': 'Chocolate',
     # }
 
 
@@ -68,24 +68,24 @@ def index():  # Função executada ao acessar a rota raiz
     # Um SQL de teste para exibir todos os 'trecos' do usuário conectado
     sql = '''
         SELECT t_id, t_foto, t_nome, t_descricao, t_localizacao
-        FROM treco
+        FROM produtos
         WHERE t_usuario = %s
             AND t_status = 'on'
         ORDER BY t_data DESC
     '''
     cur = mysql.connection.cursor()
     cur.execute(sql, (g.usuario['id'],))
-    trecos = cur.fetchall()
+    produtos = cur.fetchall()
     cur.close()
 
     # Teste de mesa para verificar o retorno dos dados do banco de dados
-    # print('\n\n\n', trecos, '\n\n\n')
+    # print('\n\n\n', produtos, '\n\n\n')
 
     # Dados, variáveis e valores a serem passados para o template HTML
     pagina = {
-        'titulo': 'CRUDTrecos',
+        'titulo': 'MardeChocolate',
         'usuario': g.usuario,
-        'trecos': trecos,
+        'produtos': produtos,
         'acao': acao,
     }
 
@@ -93,9 +93,9 @@ def index():  # Função executada ao acessar a rota raiz
     return render_template('index.html', **pagina)
 
 
-# Rota para a página de cadastro de novo treco
+# Rota para a página de cadastro de novo produtos
 @app.route('/novo', methods=['GET', 'POST'])
-def novo():  # Função executada para cadastrar novo treco
+def novo():  # Função executada para cadastrar novo tprodutos
 
     # Se o usuário não está logado redireciona para a página de login
     if g.usuario == '':
@@ -116,7 +116,7 @@ def novo():  # Função executada para cadastrar novo treco
 
         # Grava os dados no banco de dados
         sql = '''
-            INSERT INTO treco (
+            INSERT INTO produtos(
                 t_usuario, t_foto, t_nome, t_descricao, t_localizacao
             ) VALUES (%s, %s, %s, %s, %s)
         '''
@@ -135,7 +135,7 @@ def novo():  # Função executada para cadastrar novo treco
 
     # Dados, variáveis e valores a serem passados para o template HTML
     pagina = {
-        'titulo': 'CRUDTrecos - Novo Treco',
+        'titulo': 'MardeChocolate - Novo produtos',
         'usuario': g.usuario,
         'sucesso': sucesso,
     }
@@ -158,7 +158,7 @@ def edita(id):
         # print('\n\n\n FORM:', form, '\n\n\n')
 
         sql = '''
-            UPDATE treco 
+            UPDATE produtos
             SET t_foto = %s,
                 t_nome = %s,
                 t_descricao = %s,
@@ -179,7 +179,7 @@ def edita(id):
         return redirect(url_for('index', a='editado'))
 
     sql = '''
-        SELECT * FROM treco
+        SELECT * FROM produtos
         WHERE t_id = %s
             AND t_usuario = %s
             AND t_status = 'on'
@@ -195,7 +195,7 @@ def edita(id):
         abort(404)
 
     pagina = {
-        'titulo': 'CRUDTrecos',
+        'titulo': 'MardeChocolate',
         'usuario': g.usuario,
         'treco': row,
     }
@@ -211,9 +211,9 @@ def apaga(id):
         return redirect(url_for('login'))
 
     # (des)comente o método para apagar conforme o seu caso
-    # sql = 'DELETE FROM treco WHERE t_id = %s' # Apaga completamente o treco (CUIDADO!)
-    # Altera o status do treco para 'del'
-    sql = "UPDATE treco SET t_status = 'del'  WHERE t_id = %s"
+    # sql = 'DELETE FROM produtos WHERE t_id = %s' # Apaga completamente o produtos (CUIDADO!)
+    # Altera o status do produtos para 'del'
+    sql = "UPDATE produtos SET t_status = 'del'  WHERE t_id = %s"
 
     # Executa o SQL
     cur = mysql.connection.cursor()
@@ -304,7 +304,7 @@ def login():
 
     # Dados, variáveis e valores a serem passados para o template HTML
     pagina = {
-        'titulo': 'CRUDTrecos - Login',
+        'titulo': 'MardeChocolate - Login',
         'erro': erro
     }
 
@@ -343,7 +343,7 @@ def cadastro():
 
     # Dados, variáveis e valores a serem passados para o template HTML
     pagina = {
-        'titulo': 'CRUDTrecos - Cadastre-se',
+        'titulo': 'MardeChocolate - Cadastre-se',
     }
 
     return render_template('cadastro.html', **pagina)
@@ -408,7 +408,7 @@ def novasenha():
 
     # Dados, variáveis e valores a serem passados para o template HTML
     pagina = {
-        'titulo': 'CRUDTrecos - Nova Senha',
+        'titulo': 'MardeChocolate - Nova Senha',
         'erro': erro,
         'novasenha': novasenha,
     }
@@ -426,10 +426,10 @@ def perfil():
     # Calcula idade do usuário
     g.usuario['idade'] = calcular_idade(g.usuario['nascimento'])
 
-    # Obtém a quantidade de trecos ativos os usuário
+    # Obtém a quantidade de produtos ativos os usuário
     sql = '''
         SELECT count(t_id) AS total
-        FROM treco
+        FROM produtos
         WHERE t_usuario = %s
             AND t_status = 'on'
     '''
@@ -445,7 +445,7 @@ def perfil():
 
     # Dados, variáveis e valores a serem passados para o template HTML
     pagina = {
-        'titulo': 'CRUDTrecos - Novo Treco',
+        'titulo': 'MardeChocolate - Novo produto',
         'usuario': g.usuario,  # Dados do cookie do usuário
     }
 
@@ -456,7 +456,7 @@ def perfil():
 @app.route('/apagausuario')
 def apagausuario():
     # Apaga um usuário do sistema
-    # Também apaga todos os seus "trecos"
+    # Também apaga todos os seus "produtos"
 
     # Se o usuário não está logado redireciona para a página de login
     if g.usuario == '':
@@ -469,8 +469,8 @@ def apagausuario():
     mysql.connection.commit()
     cur.close()
 
-    # Configura o status dos trecos do usuário para 'del' no banco de dados
-    sql = "UPDATE treco SET t_status = 'del' WHERE t_usuario = %s"
+    # Configura o status dos produtos do usuário para 'del' no banco de dados
+    sql = "UPDATE produtos SET t_status = 'del' WHERE t_usuario = %s"
     cur = mysql.connection.cursor()
     cur.execute(sql, (g.usuario['id'],))
     mysql.connection.commit()
@@ -551,7 +551,7 @@ def editaperfil():
     # print('\n\n\n USER:', row, '\n\n\n')
 
     pagina = {
-        'titulo': 'CRUDTrecos - Erro 404',
+        'titulo': 'MardeChocolate- Erro 404',
         'usuario': g.usuario,
         'form': row
     }
@@ -561,7 +561,7 @@ def editaperfil():
 @app.errorhandler(404)
 def page_not_found(e):
     pagina = {
-        'titulo': 'CRUDTrecos - Erro 404',
+        'titulo': 'MardeChocolate - Erro 404',
         'usuario': g.usuario,
     }
     return render_template('404.html', **pagina), 404

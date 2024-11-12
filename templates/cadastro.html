@@ -4,8 +4,8 @@
 {# Bloco com conteúdo desta página #}
 {% block conteudo %}
 
-<h2>Cadastre-se</h2>
-<p>Você precisa se cadastrar para gerenciar sua coleção.</p>
+<h2>Cadastre-se no Mar de Chocolate</h2>
+<p>Você precisa se cadastrar para gerenciar seus produtos</p>
 <p>Preencha todos os campos para se cadastrar.</p>
 
 <form action="/cadastro" method="post" id="formCadastro">
@@ -43,6 +43,13 @@
             <input type="password" id="senha" name="senha" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="A senha deve ter pelo menos 8 caracteres incluindo: maiúculas, minúsculas, números e caracteres especiais." required>
             <span id="toggleSenha"><i id="toggleIcone" class="fa-solid fa-eye fa-fw"></i></span>
         </span>
+    </p>
+    <p>
+        <label for="foto">
+            Foto:
+            <span class="field-help" title="URL da sua foto de perfil. Deve iniciar com http:// ou https://"><i class="fa-solid fa-circle-question"></i></span>
+        </label>
+        <input type="url" name="foto" id="foto" required placeholder="https://">
     </p>
 
     <p>
