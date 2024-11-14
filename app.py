@@ -65,7 +65,7 @@ def index():  # Função executada ao acessar a rota raiz
 
     acao = request.args.get('a')
 
-    # Um SQL de teste para exibir todos os 'trecos' do usuário conectado
+    # Um SQL de teste para exibir todos os 'mardechocolate' do usuário conectado
     sql = '''
         SELECT t_id, t_foto, t_nome, t_descricao, t_localizacao
         FROM produtos
@@ -476,7 +476,7 @@ def apagausuario():
     mysql.connection.commit()
     cur.close()
 
-    # Página de destino de logout
+    # Página de destino de logout'
     resposta = make_response(redirect(url_for('login')))
 
     # apaga o cookie do usuário
@@ -566,8 +566,18 @@ def page_not_found(e):
     }
     return render_template('404.html', **pagina), 404
 
-
+@app.route('/sobre')
+def sobre():
+    pagina = {
+        'titulo': 'MardeChocolate - Sobre',
+        'usuario': g.usuario,
+    }
+    return render_template("sobre.html", **pagina)
+    
 # Executa o servidor HTTP se estiver no modo de desenvolvimento
 # Remova / comente essas linhas no modo de produção
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
